@@ -1,12 +1,12 @@
 import type { Knex } from "knex";
 import dotenv from "dotenv";
-import { DB_URL } from "./src/config/env";
+import { CLIENT, DB_URL } from "./src/config/env";
 
 dotenv.config();
 
 const config: { [key: string]: Knex.Config } = {
   development: {
-    client: "mysql2",
+    client: CLIENT,
     connection: DB_URL,
     migrations: {
       directory: "./src/db/migrations"

@@ -17,7 +17,7 @@ const options: swaggerJSDoc.Options = {
     components: {
         securitySchemes: {
             BearerAuth: {
-                type: "http",
+                type: BASE_URL ? "http" : "https",
                 scheme: "bearer",
                 bearerFormat: "JWT"
             }

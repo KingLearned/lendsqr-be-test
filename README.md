@@ -45,9 +45,13 @@ Use `Authorization: Bearer <token>` in the header to simulate login and other au
 ## E-R Diagram
 > ![ER Diagram](./ER_Diagram.png)
 <<<<<<< HEAD
+<<<<<<< HEAD
 url - https://dbdesigner.page.link/KaRpnrRomDMAeJ796
 =======
 >>>>>>> 157f3e8 (Add comprehensive readme.md file)
+=======
+url - https://dbdesigner.page.link/KaRpnrRomDMAeJ796
+>>>>>>> 2e5439e (Add E-R Diagram url)
 
 ## Project Setup
 ```bash
@@ -76,10 +80,7 @@ npm run test
 ```
 
 ## Folder Structure
-<<<<<<< HEAD
 ```bash
-=======
->>>>>>> 157f3e8 (Add comprehensive readme.md file)
 src/
 ├── controllers/      # Route logic
 ├── routes/           # Express routes
@@ -88,9 +89,5 @@ src/
 ├── utils/            # Helper functions (e.g., validator, account number generator)
 ├── db/               # Knex migrations and seeds
 ├── tests/            # Jest test files
-<<<<<<< HEAD
 index.ts              # Entry point
 ```
-=======
-├── index.ts          # Entry point
->>>>>>> 157f3e8 (Add comprehensive readme.md file)

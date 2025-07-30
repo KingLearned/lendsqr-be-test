@@ -44,14 +44,7 @@ Use `Authorization: Bearer <token>` in the header to simulate login and other au
 
 ## E-R Diagram
 > ![ER Diagram](./ER_Diagram.png)
-<<<<<<< HEAD
-<<<<<<< HEAD
 url - https://dbdesigner.page.link/KaRpnrRomDMAeJ796
-=======
->>>>>>> 157f3e8 (Add comprehensive readme.md file)
-=======
-url - https://dbdesigner.page.link/KaRpnrRomDMAeJ796
->>>>>>> 2e5439e (Add E-R Diagram url)
 
 ## Project Setup
 ```bash

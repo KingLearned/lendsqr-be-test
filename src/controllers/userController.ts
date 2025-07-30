@@ -52,7 +52,6 @@ export abstract class UserController {
       }});
 
     } catch (error: any) {
-      console.error("Error fetching user wallet info:", error);
       throw new Error("Could not fetch user wallet info: " + error.message);
     }
   };
@@ -106,7 +105,6 @@ export abstract class UserController {
       }
       res.status(200).json({ success: true, message: "Transaction history fetched successfully", transactions });
     } catch (error: any) {
-      console.error("Error fetching transaction history:", error);
       res.status(500).json({ success: false, message: "Could not fetch transaction history" });
     }
   }

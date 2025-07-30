@@ -48,7 +48,6 @@ export default abstract class WalletServices {
       return balance 
 
     } catch (error:any) {
-      console.log(error)
       throw new Error("Error funding wallet: " + error.message);
     }
   };
@@ -90,7 +89,6 @@ export default abstract class WalletServices {
 
       });
     } catch (error:any) {
-      console.log(error);
       throw new Error("Error transferring funds: " + error.message);
     }
   };
@@ -127,7 +125,6 @@ export default abstract class WalletServices {
 
       return transactions;
     } catch (error:any) {
-      console.log(error);
       throw new Error("Error fetching transactions: " + error.message);
     }
   }

@@ -1,16 +1,17 @@
 import swaggerJSDoc from "swagger-jsdoc";
+import { BASE_URL } from "../config/env";
 
 const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Demo Credit Wallet API",
+      title: "Lendsqr Demo Credit Wallet API",
       version: "1.0.0",
-      description: "API documentation for the Demo Credit Wallet MVP",
+      description: "API documentation for the Lendsqr Demo Credit Wallet MVP",
     },
     servers: [
       {
-        url: "http://localhost:3000/api",
+        url: BASE_URL,
       },
     ],
     components: {

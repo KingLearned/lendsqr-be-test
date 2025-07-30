@@ -1,22 +1,19 @@
-import jwt, { SignOptions } from "jsonwebtoken";
-import dotenv from "dotenv";
-import DB from "../config/db";
+import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from 'express'
-
-dotenv.config();
+import { PRIVATE_KEY } from "../config/env";
 
 export abstract class AuthHelper {
 
     public static signJwt = (payload: Object) => {
     
-        return jwt.sign(payload, process.env.PRIVATE_KEY as string, {
+        return jwt.sign(payload, PRIVATE_KEY, {
         expiresIn: "744h",
         });
     }   
 
     public static verifyJwt = <T>(token: string): T | null => {
         try {
-            return jwt.verify(token, process.env.PRIVATE_KEY as string) as T;
+            return jwt.verify(token, PRIVATE_KEY) as T;
         } catch (error) {
             return null;
         }

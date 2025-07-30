@@ -14,7 +14,14 @@ app.use(express.json());
 
 app.use("/api/auth", AuthRouter);
 app.use("/api/user", UserRouter);
-// Swagger UI route
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// API documentation route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec,  
+    {
+        swaggerOptions: {
+            persistAuthorization: true,
+        }
+    }
+));
 
 app.listen(PORT, () => console.log(`LendSqr Server running on: http://localhost:${PORT}`));

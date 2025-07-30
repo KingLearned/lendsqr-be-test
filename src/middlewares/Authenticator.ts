@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from 'express'
 import { PRIVATE_KEY } from "../config/env";
 
-export abstract class AuthHelper {
+export default abstract class AuthHelper {
 
     public static signJwt = (payload: Object) => {
     

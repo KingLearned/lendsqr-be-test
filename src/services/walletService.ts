@@ -1,7 +1,7 @@
 import DB from "../config/db";
 import { generateUniqueAccountNumber } from "../utils/generateAccountNumber";
 
-export abstract class WalletServices {
+export default abstract class WalletServices {
 
   // Create a wallet for a user
   public static createWallet = async (userId: number) => {
@@ -22,6 +22,12 @@ export abstract class WalletServices {
       throw new Error("Error creating wallet: " + error.message);
     }
   };
+
+  // Get user's wallet balance
+  public static async returnbalance(userId: number) {
+    const balance = await DB("wallets").where("user_id", userId).select("balance").first();
+    return `NGN${Number(balance.balance).toLocaleString()}`;
+  }
 
   // Fund a user's wallet
   public static fundUserWallet = async (userId: number, amount: number) => {
@@ -46,12 +52,6 @@ export abstract class WalletServices {
       throw new Error("Error funding wallet: " + error.message);
     }
   };
-
-  // Get user's wallet balance
-  public static async returnbalance(userId: number) {
-    const balance = await DB("wallets").where("user_id", userId).select("balance").first();
-    return `NGN${Number(balance.balance).toLocaleString()}`;
-  }
 
   // Transfer funds to another user
   public static transferFunds = async (

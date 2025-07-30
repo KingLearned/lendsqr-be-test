@@ -2,12 +2,12 @@ import { Request, Response } from "express";
 import { checkBlacklist } from "../services/Karmablacklist";
 import { hashPassword, comparePassword } from '../utils/password_hash';
 import DB from "../config/db";
-import { AuthHelper } from "../middlewares/Authenticator";
-import { Validator } from "../utils/validator";
-import { WalletServices } from "../services/walletService";
+import  AuthHelper  from "../middlewares/Authenticator";
+import  Validator  from "../utils/validator";
+import WalletServices from "../services/walletService";
 
 
-export abstract class AuthController {
+export default abstract class AuthController {
   public static registerUser = async (req: Request, res: Response) => {
     
     const { email, password, firstName, lastName, phone, bvn } = req.body;
@@ -18,11 +18,11 @@ export abstract class AuthController {
           return res.status(400).json({ success: false, message: 'All fields are required!' });
         }
         // Validate email format
-        if (Validator.isEmailValid(email)) return res.status(400).json({ success: false, message: 'Invalid email format!' });
+        if (!Validator.isEmailValid(email)) return res.status(400).json({ success: false, message: 'Invalid email format!' });
         // Validate phone number format
-        if(Validator.isPhoneNumberValid(phone)) return res.status(400).json({ success: false, message: 'Invalid phone number format!' });
+        if(!Validator.isPhoneNumberValid(phone)) return res.status(400).json({ success: false, message: 'Invalid phone number format!' });
         // Validate BVN format
-        if(Validator.isBvnValid(bvn)) return res.status(400).json({ success: false, message: 'Invalid BVN format!' });
+        if(!Validator.isBvnValid(bvn)) return res.status(400).json({ success: false, message: 'Invalid BVN format!' });
 
         // Check if email exists
         if(await Validator.checkEmailExist(email)) return res.status(400).json({ success: false, message: 'Email is already in use!' });
@@ -64,16 +64,19 @@ export abstract class AuthController {
 
     const { email, password } = req.body;
     if (!email || !password) {
+      console.log("LOGIN: Missing email or password, returning 400.")
       return res.status(400).json({ success: false, message: 'Email and password are required!' });
     }
     // Check if user exists
     const user = await DB('users').where({ email }).first();
     if (!user) {
+      console.log("LOGIN: User not found, returning 400.");
       return res.status(400).json({ success: false, message: 'Invalid credentials!' });
     }
     
     const passwordMatch = await comparePassword(password, user.password);
     if (!passwordMatch) {
+      console.log("LOGIN: Password mismatch, returning 400.")
       return res.status(400).json({ success: false, message: 'Invalid credentials!' });
     }
     
@@ -83,8 +86,8 @@ export abstract class AuthController {
       user: {
         id: user.id,
         email: user.email,
-        firstname: user.firstname,
-        lastname: user.lastname,
+        firstname: user.firstName,
+        lastname: user.lastName,
       }
       , token });
   };

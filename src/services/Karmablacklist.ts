@@ -9,7 +9,8 @@ export const checkBlacklist = async (bvn:string) => {
             headers: {
                 Authorization: `Bearer ${LENDSQR_API_TOKEN}`,
             },
-        });
+        })
+
         if (data.blacklisted) {
             throw new Error("User is blacklisted");
         }

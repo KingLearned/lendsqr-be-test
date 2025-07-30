@@ -7,11 +7,11 @@ const options: swaggerJSDoc.Options = {
     info: {
       title: "Lendsqr Demo Credit Wallet API",
       version: "1.0.0",
-      description: "API documentation for the Lendsqr Demo Credit Wallet MVP",
+      description: "API documentation for the Lendsqr Demo Credit Wallet MVP Test",
     },
     servers: [
       {
-        url: BASE_URL,
+        url: BASE_URL || "https://nelson-uwakwe-lendsqr-be-test.onrender.com/api",
       },
     ],
     components: {
@@ -25,7 +25,7 @@ const options: swaggerJSDoc.Options = {
     },
     security: [
         {
-            BearerAuth: []
+          BearerAuth: []
         },
     ],
   },

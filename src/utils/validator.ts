@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction, response } from 'express'
 import DB from '../config/db';
 
-export abstract class Validator {
+export default abstract class Validator {
 
     public static isEmailValid( email: string) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
+        if (emailRegex.test(email)) {
             return true
         }
         return false;
@@ -13,7 +13,7 @@ export abstract class Validator {
 
     public static isPhoneNumberValid(phone: string) {
         const phoneRegex = /^\d{11}$/;
-        if (!phoneRegex.test(phone)) {
+        if (phoneRegex.test(phone)) {
             return true
         }
         return false;
@@ -21,7 +21,7 @@ export abstract class Validator {
 
     public static isBvnValid(bvn: string) {
         const bvnRegex = /^\d{11}$/;
-        if (!bvnRegex.test(bvn)) {
+        if (bvnRegex.test(bvn)) {
             return true
         }
         return false;

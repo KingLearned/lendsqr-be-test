@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import { WalletServices } from "../services/walletService";
-import { userInfo } from "os";
+import WalletServices from "../services/walletService";
 import DB from "../config/db";
 
 
@@ -111,7 +110,6 @@ export abstract class UserController {
       res.status(500).json({ success: false, message: "Could not fetch transaction history" });
     }
   }
-
 }
 
 
